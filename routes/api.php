@@ -10,7 +10,6 @@ Route::group([
 ], function ($router) {
 
     // Ruta pública
-    Route::post('login', [AuthController::class, 'login']);
 
     // Rutas protegidas con middleware auth:api
     Route::middleware('auth:api')->group(function () {
@@ -19,4 +18,5 @@ Route::group([
         Route::post('me', [AuthController::class, 'me']);
     });
 });
+Route::post('auth/login', [AuthController::class, 'login']);
 
