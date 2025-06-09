@@ -1,0 +1,24 @@
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteRule ^$ public/index.php [L]
+
+    RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+
+</IfModule>
+# Configuración de archivos estáticos permitidos
+<FilesMatch "\.(jpg|jpeg|png|gif|pdf|css|js)$">
+    Allow from all
+</FilesMatch>
+<Directory "/home/sist9136/public_html/storage">
+    Options FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+RewriteCond %{HTTP_HOST} ^sistemaairegases\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sistemaairegases\.com$
+RewriteRule ^admin$ "http\:\/\/137\.184\.11\.147\/" [R=301,L]
+
