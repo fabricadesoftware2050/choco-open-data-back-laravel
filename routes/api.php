@@ -18,5 +18,5 @@ Route::group([
         Route::post('me', [AuthController::class, 'me']);
     });
 });
-Route::post('auth/login', [AuthController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login'])->middleware('auth:api');
 
